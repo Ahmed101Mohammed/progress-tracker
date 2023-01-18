@@ -10,7 +10,6 @@ class Sqlite3DB:
     def create_table_not_exists(self, name, columons):
         columons_in_execute_structure = self.prepare_table_columns(columons)
         execute_line = 'CREATE TABLE IF NOT EXISTS "' + name + '" ' + columons_in_execute_structure
-        print('ex:', execute_line)
         self.open.execute(execute_line)
         self.connect.commit()
 
