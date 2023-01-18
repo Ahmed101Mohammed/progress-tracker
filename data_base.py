@@ -1,5 +1,6 @@
 import sqlite3
 
+
 class Sqlite3DB:
 
     def __init__(self,name):
@@ -23,3 +24,9 @@ class Sqlite3DB:
         columons_str += ")"
 
         return columons_str
+
+    def excute_data_base_structure(self,tables):
+            
+            for table in tables:
+                self.create_table_not_exists(table['table_title'], table['table_columons'])
+                
