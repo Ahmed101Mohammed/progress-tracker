@@ -28,5 +28,14 @@ class Sqlite3DB:
             
             for table in tables:
                 self.create_table_not_exists(table['table_title'], table['table_columons'])
+
+    def search(self, excute_line, *values):
+        self.open.execute(excute_line, values)
+        return self.open.fetchmany()
+
+    def execute(self,execute_line, *values):
+        self.open.execute(execute_line, values)
+        self.connect.commit()
+
                 
 project_DB = Sqlite3DB('progressive.sqlite')
