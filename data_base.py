@@ -29,3 +29,4 @@ class Sqlite3DB:
             for table in tables:
                 self.create_table_not_exists(table['table_title'], table['table_columons'])
                 
+project_DB = Sqlite3DB('progressive.sqlite')
