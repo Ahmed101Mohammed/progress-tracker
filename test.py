@@ -1,5 +1,5 @@
-a =  range(7)
-for i in a:
-    print(i)
-    
-
+welcome_sentence = """
+                        Welcome My Boy to progress tracker program.
+                        Hi
+                """
+print(welcome_sentence)
