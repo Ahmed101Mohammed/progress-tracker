@@ -17,7 +17,7 @@ data_structure = [
                         "table_columons": [ "id INTEGER PRIMARY KEY AUTOINCREMENT",
                                             "user_id INTEGER",
                                             "subject_id INTEGER",
-                                            "target_houres REAL",
+                                            "target_hours REAL",
                                             "progress REAL"
                                             ]
                     }
