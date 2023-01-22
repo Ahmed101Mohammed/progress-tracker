@@ -1,14 +1,13 @@
 class Services:
-    def __init__(self):
+    def __init__(self, user_name):
+        self.user_name = user_name
         self.services = {
-            "1": self.record_new_goal,
-            "2": self.record_progress,
-            "3": self.show_info
+            
         }
 
         self.window_view()
 
-    def widow_view(self):
+    def window_view(self):
         the_services = " Services:\n 1. Record a new goal.\n 2. Record a progress in an old goal.\n 3. Show My Information.\n Inter the number of the serviece to choose specific one."
         print(the_services)
         self.choose_the_service()
@@ -18,6 +17,7 @@ class Services:
         try:
             self.services[the_number_of_the_service]()
         except:
-            print('Wrong number !!!')
-            self.choose_the_services()
+            print(' Wrong number !!!,Try again...\n')
+            self.choose_the_service()
+
         
