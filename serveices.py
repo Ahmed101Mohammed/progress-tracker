@@ -7,7 +7,7 @@ class Services:
         self.services = {
             "1": self.record_new_goal,
             "2": self.record_progress,
-            # "3": self.show_info
+            "3": self.show_info
         }
 
         self.window_view()
@@ -67,7 +67,8 @@ class Services:
             return self.window_view()
 
         for goal in goals:
-            print("- Goal id: " + str(goal[0]) + "\n  Goal Subject: "+ goal[1] + "\n  Goal hours target: " + str(goal[2]) + "\n  Your achievement: " + str(goal[3] * 100 / goal[2])+ "%")
+            print("- Goal id: " + str(goal[0]) + "\n  Goal Subject: "+ goal[1] + "\n  Goal hours target: " + str(goal[2]) + "h\n  Your achievement: " + str(goal[3] * 100 / goal[2])+ "%")
+            print("_______________")
 
     def get_goal_id(self):
         try:
@@ -100,5 +101,17 @@ class Services:
         hours_invested = project_DB.search("SELECT hours FROM users WHERE name = ?", self.user_name)[0][0]
         project_DB.execute("UPDATE users SET hours = ? WHERE name = ?", (hours_progress + hours_invested), self.user_name)
 
+    def show_info(self):
+        print("---------------------------------------------")
+        self.show_global_user_info()
+        print("\n More Details ====>")
+        self.show_user_goals()
+        print("---------------------------------------------")
+        return self.window_view()
+
+
+    def show_global_user_info(self):
+        all_invested_hours = project_DB.search("SELECT hours FROM users WHERE name = ?", self.user_name)[0][0]
+        print(" Name: " + self.user_name + "  |  All Invested Hours: " + str(all_invested_hours) + "h")
     
         
