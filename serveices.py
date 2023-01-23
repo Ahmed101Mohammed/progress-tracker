@@ -1,5 +1,5 @@
-import re
 from data_base import project_DB
+from end import end_program
 
 class Services:
     def __init__(self, user_name):
@@ -19,6 +19,8 @@ class Services:
 
     def choose_the_service(self):
         the_number_of_the_service = input(' Access the number of choosen service: ')
+        end_program.end(the_number_of_the_service)
+
         try:
             self.services[the_number_of_the_service]()
         except:
@@ -44,7 +46,8 @@ class Services:
 
     def get_target_hours(self, subject):
         try:
-            target_hours = float(input(' What is your target hours for ' + subject + "? "))
+            target_hours_st = input(' What is your target hours for ' + subject + "? ")
+            target_hours = float(target_hours_st)
         except:
             print(' Print a real number, Try Again...')
             self.get_target_hours(subject)
@@ -67,12 +70,13 @@ class Services:
             return self.window_view()
 
         for goal in goals:
-            print("- Goal id: " + str(goal[0]) + "\n  Goal Subject: "+ goal[1] + "\n  Goal hours target: " + str(goal[2]) + "h\n  Your achievement: " + str(goal[3] * 100 / goal[2])+ "%")
-            print("_______________")
+            print("\n- Goal id: " + str(goal[0]) + "\n  Goal Subject: "+ goal[1] + "\n  Goal hours target: " + str(goal[2]) + " h\n  Your achievement: " + str(goal[3] * 100 / goal[2])+ "%")
+            print("_______________\n")
 
     def get_goal_id(self):
         try:
-            goal_id = int(input(' Enter the id of the goal that you achieave a progress in: ' ))
+            goal_id_str = input(' Enter the id of the goal that you achieave a progress in: ' )
+            goal_id = int(goal_id_str)
         except:
             print(" Wrong Number, Try Again...")
             return self.get_goal_id()
@@ -86,7 +90,8 @@ class Services:
 
     def get_progress_hours(self):
         try:
-            progress_hours = float(input(' How much hours did you invest in your goal? '))
+            progress_hours_str = input(' How much hours did you invest in your goal? ')
+            progress_hours = float(progress_hours_str)
             return progress_hours
         except:
             print(" Wrong number, Try again...")

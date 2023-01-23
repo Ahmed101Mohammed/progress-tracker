@@ -31,7 +31,7 @@ class Sqlite3DB:
 
     def search(self, excute_line, *values):
         self.open.execute(excute_line, values)
-        return self.open.fetchmany()
+        return self.open.fetchall()
 
     def execute(self,execute_line, *values):
         self.open.execute(execute_line, values)
